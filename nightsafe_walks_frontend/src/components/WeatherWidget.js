@@ -7,8 +7,14 @@ import React, { useEffect, useState } from "react";
  * 
  * @param {Object} location - Object with lat/lng (from geolocation API in parent)
  */
-const WEATHER_API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY || "YOUR_OPENWEATHERMAP_API_KEY_HERE"; // <-- For security, recommend using env variable.
-const UNITS = "metric"; // "metric" = Celsius, "imperial" = Fahrenheit
+/**
+ * Use OpenWeatherMap API Key from config - currently hardcoded,
+ * but allows swapping easily by updating this constant.
+ */
+import config from '../config.js';
+
+const WEATHER_API_KEY = config.weatherApiKey;
+const UNITS = config.weatherUnits;
 
 /**
  * PUBLIC_INTERFACE
