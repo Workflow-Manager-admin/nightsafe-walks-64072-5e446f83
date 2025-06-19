@@ -3,25 +3,32 @@ import React, { useEffect, useState } from "react";
 /**
  * PUBLIC_INTERFACE
  * MapSection displays the user's current real-time location using the browser Geolocation API.
- * The component renders a minimal map representation with the user's coordinates and a route.
- * All mock/demo logic is removed; location and route visualization is now based on real data.
- * 
+ * Explicitly handles loading, permission denied, and geolocation errors, with robust and persistent user-facing error/fallback UI.
  * @param {Object} location - Object with lat/lng (from geolocation API)
  * @param {Array} route - List of coordinates for route polyline
  */
 function MapSection({ location, route }) {
-  // For potential error handling (e.g., permissions/location denied)
+  // Local error state: useEffect will update based on geolocation and parent data flow.
   const [errorMsg, setErrorMsg] = useState("");
+  const [hasAttemptedGeolocation, setHasAttemptedGeolocation] = useState(false);
 
   useEffect(() => {
-    if (!location && !navigator.geolocation) {
-      setErrorMsg("Geolocation not available.");
-    } else if (!location) {
-      setErrorMsg(""); // awaiting location
-    } else {
-      setErrorMsg(""); // got location
+    // This component only gets props.location from parent. But, display better error/fallback logic based on geolocation circumstances.
+    if (!navigator.geolocation) {
+      setErrorMsg("Geolocation not available in your browser.");
+      setHasAttemptedGeolocation(false);
+    } else if (location === null && !hasAttemptedGeolocation) {
+      // The app tried to get location, but not set to any value yet. Show finding/awaiting state.
+      setErrorMsg("");
+      setHasAttemptedGeolocation(true);
+    } else if (location === null && hasAttemptedGeolocation) {
+      // Could not obtain location; display fallback.
+      setErrorMsg("Unable to access your location. Please allow location permission or try again.");
+    } else if (location) {
+      setErrorMsg(""); // Success, location present
+      setHasAttemptedGeolocation(false);
     }
-  }, [location]);
+  }, [location, hasAttemptedGeolocation]);
 
   // Minimal 2D "map": user and route, live coordinates
   function renderSimpleMap() {

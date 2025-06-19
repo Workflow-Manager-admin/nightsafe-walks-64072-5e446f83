@@ -3,17 +3,10 @@ import React, { useEffect, useState } from "react";
 /**
  * PUBLIC_INTERFACE
  * WeatherWidget fetches and displays the current weather for the user's actual GPS location.
- * Uses public API (OpenWeatherMap One Call or Current Weather) to fetch real data using coordinates.
- *
- * Configuration:
- *   - You must provide an OpenWeatherMap API key below as WEATHER_API_KEY. (Sign up free: https://openweathermap.org/api)
- *     For security, consider setting this in a .env file for production.
- *   - Optionally, set units to "metric" (°C) or "imperial" (°F).
- *
- * Props:
- *   - weather (not required): kept for backwards compatibility; replaced by internal fetch logic.
+ * Enhanced with explicit user-facing UI for: missing API key, fetch/network/API errors, and persistent unavailable/fallback states.
+ * 
+ * @param {Object} location - Object with lat/lng (from geolocation API in parent)
  */
-
 const WEATHER_API_KEY = "YOUR_OPENWEATHERMAP_API_KEY_HERE"; // <-- Put your real OpenWeatherMap API key here.
 const UNITS = "metric"; // "metric" = Celsius, "imperial" = Fahrenheit
 
@@ -21,20 +14,37 @@ function WeatherWidget({ weather: _legacyProp, location }) {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState("");
+  const [apiKeyError, setApiKeyError] = useState("");
 
-  // Fetch weather on mount or when location changes
   useEffect(() => {
-    // Only fetch if real coordinates are available
+    // Only fetch if real coordinates and API key is present
     if (!location?.lat || !location?.lng) {
+      setWeather(null);
+      setFetchError("");
+      setApiKeyError("");
+      setLoading(false);
+      return;
+    }
+    if (
+      !WEATHER_API_KEY ||
+      WEATHER_API_KEY === "YOUR_OPENWEATHERMAP_API_KEY_HERE" ||
+      WEATHER_API_KEY === "xxx" ||
+      WEATHER_API_KEY.trim().length < 10
+    ) {
+      setApiKeyError(
+        "Weather service unavailable (API key missing or invalid). Please contact admin or set a valid weather API key."
+      );
       setWeather(null);
       setFetchError("");
       setLoading(false);
       return;
     }
 
+    let cancelled = false;
     async function fetchWeather() {
       setLoading(true);
       setFetchError("");
+      setApiKeyError("");
       setWeather(null);
 
       try {
@@ -44,28 +54,46 @@ function WeatherWidget({ weather: _legacyProp, location }) {
 
         const resp = await fetch(url);
         if (!resp.ok) {
+          // Try to report common error causes for API key, etc.
+          if (resp.status === 401 || resp.status === 403) {
+            setApiKeyError("Weather API key is invalid or unauthorized. Please set a correct key.");
+            setWeather(null);
+            setLoading(false);
+            return;
+          } else if (resp.status === 429) {
+            setFetchError("Weather API rate limit reached. Try again later.");
+            setWeather(null);
+            setLoading(false);
+            return;
+          }
           throw new Error(`Weather API error (${resp.status})`);
         }
         const data = await resp.json();
-
-        setWeather({
-          temp: data.main && typeof data.main.temp === "number"
-            ? (Math.round(data.main.temp) + (UNITS==="metric" ? "°C" : "°F"))
-            : "N/A",
-          description: data.weather && data.weather[0]?.description
-            ? capitalizeDesc(data.weather[0].description)
-            : "Unknown",
-          icon: data.weather && data.weather[0]?.icon
-            ? data.weather[0].icon
-            : undefined
-        });
+        // Defensive: check success shape
+        if (!data || !data.main || typeof data.main.temp !== "number" || !data.weather || !Array.isArray(data.weather)) {
+          setFetchError("Weather data temporarily unavailable.");
+          setWeather(null);
+        } else {
+          setWeather({
+            temp: (Math.round(data.main.temp) + (UNITS === "metric" ? "°C" : "°F")),
+            description: capitalizeDesc(data.weather[0]?.description) || "Unknown",
+            icon: data.weather[0]?.icon,
+          });
+        }
       } catch (e) {
-        setFetchError("Could not fetch live weather.");
+        setFetchError(
+          typeof e?.message === "string"
+            ? `Could not fetch live weather: ${e.message}`
+            : "Could not fetch live weather."
+        );
         setWeather(null);
       }
       setLoading(false);
     }
     fetchWeather();
+
+    // Cleanup if unmounted
+    return () => { cancelled = true; };
   }, [location]);
 
   function weatherIcon(desc, iconCode) {
@@ -89,28 +117,34 @@ function WeatherWidget({ weather: _legacyProp, location }) {
 
   return (
     <div className="nsw-weather-widget">
-      {/* Show loading/error states, then weather data */}
-      {loading && (
+      {/* Show API key/config error if present */}
+      {apiKeyError && (
+        <>
+          <span className="nsw-weather-icon">❌</span>
+          <div className="nsw-weather-desc" style={{ color: "#e53935" }}>{apiKeyError}</div>
+        </>
+      )}
+      {!apiKeyError && loading && (
         <>
           <span className="nsw-weather-icon">⏳</span>
           <div className="nsw-weather-desc">Fetching weather...</div>
         </>
       )}
-      {fetchError && !loading && (
+      {fetchError && !loading && !apiKeyError && (
         <>
           <span className="nsw-weather-icon">⚠️</span>
           <div className="nsw-weather-desc">{fetchError}</div>
         </>
       )}
-      {!loading && !fetchError && weather && (
+      {!loading && !fetchError && !apiKeyError && weather && (
         <>
           {weatherIcon(weather.description, weather.icon)}
           <div className="nsw-weather-temp">{weather.temp}</div>
           <div className="nsw-weather-desc">{weather.description}</div>
         </>
       )}
-      {/* If not loading/fetchError and no weather: user hasn't granted location yet. */}
-      {!loading && !fetchError && !weather && (
+      {/* If not loading/fetchError/API key and no weather: user hasn't granted location yet. */}
+      {!loading && !fetchError && !apiKeyError && !weather && (
         <>
           <span className="nsw-weather-icon">⚲</span>
           <div className="nsw-weather-desc">Waiting for location...</div>
