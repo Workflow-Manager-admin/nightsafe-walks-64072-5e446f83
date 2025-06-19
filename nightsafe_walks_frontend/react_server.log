@@ -7,92 +7,19 @@
 <i> [webpack-dev-server] On Your Network (IPv4): http://172.17.0.2:3000/
 <i> [webpack-dev-server] Content not from webpack is served from './public' directory
 Injecting EditorRootWrapper import: ../.ve/EditorRootWrapper
-asset bundle.js 1.42 MiB [emitted] (name: main)
+asset bundle.js 1.43 MiB [emitted] (name: main)
 asset index.html 1.98 KiB [emitted]
 runtime modules 27.5 KiB 14 modules
-modules by path ./node_modules/ 1.24 MiB 31 modules
-modules by path ./src/ 33.2 KiB
-  modules by path ./src/components/*.js 16.2 KiB 5 modules
-  modules by path ./src/*.css 11.4 KiB 4 modules
-  modules by path ./src/*.js 5.61 KiB
-    ./src/index.js 530 bytes [built] [code generated]
-    ./src/App.js 5.09 KiB [built] [code generated]
-modules by path ./.ve/ 15.1 KiB
-  modules by path ./.ve/*.js 10.6 KiB 2 modules
-  modules by path ./.ve/*.css 2.93 KiB
-    ./.ve/EditorOverlay.css 2.25 KiB [built] [code generated]
-    ./node_modules/css-loader/dist/cjs.js!./.ve/EditorOverlay.css 697 bytes [built] [code generated]
-  ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 1282 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.43 MiB
-  asset bundle.js 1.42 MiB [emitted] (name: main)
-  asset main.db4fddd5316176836375.hot-update.js 8.71 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.db4fddd5316176836375.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.43 MiB = bundle.js 1.42 MiB main.db4fddd5316176836375.hot-update.js 8.71 KiB
-cached modules 1.28 MiB [cached] 46 modules
-runtime modules 27.5 KiB 14 modules
-./src/components/MapSection.js 5.9 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 146 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.44 MiB
-  asset bundle.js 1.43 MiB [emitted] (name: main)
-  asset main.56d66ffd23e6da2315cf.hot-update.js 11.8 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.56d66ffd23e6da2315cf.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.56d66ffd23e6da2315cf.hot-update.js 11.8 KiB
-cached modules 1.28 MiB [cached] 46 modules
-runtime modules 27.5 KiB 14 modules
-./src/components/WeatherWidget.js 8.06 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 100 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.44 MiB
-  asset bundle.js 1.43 MiB [emitted] (name: main)
-  asset main.1ec539a67c923d916645.hot-update.js 12.2 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.1ec539a67c923d916645.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.1ec539a67c923d916645.hot-update.js 12.2 KiB
-cached modules 1.28 MiB [cached] 46 modules
-runtime modules 27.5 KiB 14 modules
-./src/components/WeatherWidget.js 8.42 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 89 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.44 MiB
-  asset bundle.js 1.43 MiB [emitted] (name: main)
-  asset main.2a945e56099864ed0ac7.hot-update.js 12.2 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.2a945e56099864ed0ac7.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.2a945e56099864ed0ac7.hot-update.js 12.2 KiB
-cached modules 1.28 MiB [cached] 46 modules
-runtime modules 27.5 KiB 14 modules
-./src/components/WeatherWidget.js 8.39 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 108 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.44 MiB
-  asset bundle.js 1.43 MiB [emitted] (name: main)
-  asset main.32c4185fba56af0a5399.hot-update.js 13.5 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.32c4185fba56af0a5399.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.32c4185fba56af0a5399.hot-update.js 13.5 KiB
-cached modules 1.28 MiB [cached] 46 modules
-runtime modules 27.5 KiB 14 modules
-./src/components/WeatherWidget.js 9.42 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 69 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.44 MiB
-  asset bundle.js 1.43 MiB [emitted] (name: main)
-  asset main.cc78b8947d5dd595df65.hot-update.js 13.6 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.cc78b8947d5dd595df65.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.cc78b8947d5dd595df65.hot-update.js 13.6 KiB
-cached modules 1.28 MiB [cached] 46 modules
-runtime modules 27.5 KiB 14 modules
-./src/components/WeatherWidget.js 9.51 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 102 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.44 MiB
-  asset bundle.js 1.43 MiB [emitted] (name: main)
-  asset main.c08b1d16f6db4780d2af.hot-update.js 14.5 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.c08b1d16f6db4780d2af.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.c08b1d16f6db4780d2af.hot-update.js 14.5 KiB
-cached modules 1.28 MiB [cached] 46 modules
-runtime modules 27.5 KiB 14 modules
-javascript modules 9.75 KiB
-  ./src/components/WeatherWidget.js 9.44 KiB [built] [code generated]
-  ./src/config.js 317 bytes [built] [code generated]
-webpack 5.99.9 compiled successfully in 66 ms
+cacheable modules 1.29 MiB
+  modules by path ./node_modules/ 1.24 MiB 31 modules
+  modules by path ./src/ 37.1 KiB
+    modules by path ./src/components/*.js 19.8 KiB 5 modules
+    modules by path ./src/*.css 11.4 KiB 4 modules
+    modules by path ./src/*.js 5.92 KiB
+      ./src/index.js 530 bytes [built] [code generated]
+      + 2 modules
+  modules by path ./.ve/ 15.1 KiB
+    modules by path ./.ve/*.js 10.6 KiB 2 modules
+    modules by path ./.ve/*.css 2.93 KiB 2 modules
+    ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 1314 ms
