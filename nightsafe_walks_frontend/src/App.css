@@ -1,0 +1,303 @@
+:root {
+  --primary: #4caf50;
+  --secondary: #ffc107;
+  --accent: #f44336;
+  --background: #f9f9fb;
+  --surface: #fff;
+  --on-primary: #fff;
+  --on-surface: #252525;
+  --on-background: #181818;
+  --on-secondary: #181818;
+  --navbar-height: 56px;
+  --border-radius: 12px;
+  --shadow: 0px 4px 16px 0px rgba(44,44,44,0.07);
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--on-background);
+  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.nsw-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.nsw-navbar {
+  height: var(--navbar-height);
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-primary);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nsw-navbar-wrap {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  padding: 0 1.25rem;
+}
+.nsw-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 1px;
+}
+.nsw-logo-icon {
+  font-size: 1.5em;
+  color: var(--secondary);
+}
+.nsw-tagline {
+  font-size: 1.07rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* Main content */
+.nsw-main {
+  flex: 1;
+  background: var(--background);
+  width: 100%;
+}
+.nsw-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+}
+.nsw-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.nsw-top-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+@media (max-width: 900px) {
+  .nsw-top-row {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+.nsw-side-widgets {
+  min-width: 275px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+@media (max-width: 900px) {
+  .nsw-side-widgets {
+    min-width: 0;
+    max-width: 100%;
+    flex-direction: row;
+    gap: 0.8rem;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+}
+.nsw-feedback-row {
+  margin-top: 10px;
+}
+
+/* MapSection styles */
+.nsw-map-section {
+  background: var(--surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 0.75rem;
+  flex: 1;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.nsw-map-placeholder {
+  flex: 1;
+  background: linear-gradient(135deg, #e3fced 60%, #f2f2f2 100%);
+  border-radius: var(--border-radius);
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 450;
+  color: var(--primary);
+  font-size: 1.18rem;
+  letter-spacing: 0.5px;
+  border: 1.5px solid #dbeedd;
+  margin: 8px 0;
+  position: relative;
+  overflow: hidden;
+}
+/* Minimalistic mock “route” line styling */
+.nsw-map-svg-route {
+  stroke: var(--primary);
+  stroke-width: 5;
+  fill: none;
+  stroke-dasharray: 16 8;
+}
+
+/* Weather widget */
+.nsw-weather-widget {
+  background: var(--surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.2rem;
+  text-align: center;
+  min-width: 180px;
+}
+.nsw-weather-icon {
+  font-size: 2.3rem;
+  margin-bottom: 0.1rem;
+}
+.nsw-weather-temp {
+  font-size: 1.46rem;
+  font-weight: 600;
+  margin-top: 0.1rem;
+  color: var(--primary);
+}
+.nsw-weather-desc {
+  font-size: 1.04rem;
+  color: var(--on-surface);
+}
+
+/* Route Safety Panel */
+.nsw-route-safety-panel {
+  background: var(--surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.15rem;
+}
+.nsw-route-title {
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  color: var(--primary);
+}
+.nsw-route-summary {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  color: var(--on-background);
+}
+.nsw-crime-list {
+  list-style: disc;
+  color: var(--accent);
+  font-size: 0.98rem;
+  margin-left: 1rem;
+  margin-top: 7px;
+  margin-bottom: 0;
+  padding-left: 1rem;
+}
+
+/* SOS Button */
+.nsw-sos-btn-box {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nsw-sos-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  background: var(--accent);
+  color: var(--on-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.86rem 1.7rem;
+  border-radius: calc(var(--border-radius) * 0.8);
+  cursor: pointer;
+  outline: none;
+  box-shadow: var(--shadow);
+  transition: background 0.2s;
+  margin-bottom: 0.5rem;
+}
+.nsw-sos-btn:active {
+  background: #c82323;
+}
+.nsw-sos-status {
+  font-size: 0.98rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Feedback Form */
+.nsw-feedback-form {
+  background: var(--surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.2rem 2rem 1.5rem 2rem;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.nsw-feedback-label {
+  font-size: 1.12rem;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  display: block;
+}
+.nsw-feedback-area {
+  width: 100%;
+  max-width: 400px;
+  min-height: 64px;
+  resize: vertical;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  padding: 0.7rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.nsw-feedback-btn {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  border: none;
+  border-radius: 5px;
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  transition: background 0.17s;
+}
+.nsw-feedback-btn:active {
+  background: #ffd43b;
+}
+
+.nsw-feedback-msg {
+  margin-top: 8px;
+  color: var(--primary);
+  font-size: 1.01rem;
+  font-weight: 500;
+  min-height: 1.1em;
+}
+
+/* Footer */
+.nsw-footer {
+  background: transparent;
+  color: #b0b0b0;
+  text-align: center;
+  font-size: 0.98rem;
+  padding: 2rem 0 1rem 0;
+  letter-spacing: 0.05em;
+}
