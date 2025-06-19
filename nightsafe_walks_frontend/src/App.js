@@ -8,9 +8,8 @@ import FeedbackForm from "./components/FeedbackForm";
 
 // PUBLIC_INTERFACE
 function App() {
-  // Global app state for location, weather, route, SOS/feedback info
+  // Global app state for location, route, SOS/feedback info
   const [location, setLocation] = useState(null);
-  const [weather, setWeather] = useState(null);
   const [routeSafety, setRouteSafety] = useState(null);
   const [sosStatus, setSosStatus] = useState(null);
   const [feedbackMessage, setFeedbackMessage] = useState(null);
@@ -37,25 +36,6 @@ function App() {
     }
     fetchLocation();
   }, []);
-
-  // Fetch weather data when location updates
-  useEffect(() => {
-    // PUBLIC_INTERFACE
-    async function fetchWeather(coords) {
-      if (!coords) {
-        setWeather(null);
-        return;
-      }
-      // Simulated fetch: replace with production Weather API
-      const weatherData = {
-        temp: "13°C",
-        description: "Clear Night",
-        icon: "clear_night",
-      };
-      setWeather(weatherData);
-    }
-    fetchWeather(location);
-  }, [location]);
 
   // Fetch safest route info when location changes
   useEffect(() => {
@@ -116,7 +96,7 @@ function App() {
           <section className="nsw-top-row">
             <MapSection location={location} route={routeSafety?.routeCoordinates} />
             <aside className="nsw-side-widgets">
-              <WeatherWidget weather={weather} />
+              <WeatherWidget location={location} />
               <RouteSafetyPanel
                 routeSafety={routeSafety}
                 loading={!routeSafety && location}
