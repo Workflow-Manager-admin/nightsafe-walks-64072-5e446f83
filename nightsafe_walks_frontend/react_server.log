@@ -44,3 +44,33 @@ cached modules 1.28 MiB [cached] 46 modules
 runtime modules 27.5 KiB 14 modules
 ./src/components/WeatherWidget.js 8.06 KiB [built] [code generated]
 webpack 5.99.9 compiled successfully in 100 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.1ec539a67c923d916645.hot-update.js 12.2 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.1ec539a67c923d916645.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.1ec539a67c923d916645.hot-update.js 12.2 KiB
+cached modules 1.28 MiB [cached] 46 modules
+runtime modules 27.5 KiB 14 modules
+./src/components/WeatherWidget.js 8.42 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 89 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.2a945e56099864ed0ac7.hot-update.js 12.2 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.2a945e56099864ed0ac7.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.2a945e56099864ed0ac7.hot-update.js 12.2 KiB
+cached modules 1.28 MiB [cached] 46 modules
+runtime modules 27.5 KiB 14 modules
+./src/components/WeatherWidget.js 8.39 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 108 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.32c4185fba56af0a5399.hot-update.js 13.5 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.32c4185fba56af0a5399.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.32c4185fba56af0a5399.hot-update.js 13.5 KiB
+cached modules 1.28 MiB [cached] 46 modules
+runtime modules 27.5 KiB 14 modules
+./src/components/WeatherWidget.js 9.42 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 69 ms
